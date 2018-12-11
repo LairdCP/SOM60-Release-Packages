@@ -1,5 +1,7 @@
 # SOM60-Release-Packages
-SOM60 Developer Kit and Source Releases
+SOM60 Development Kit and Source Releases.  For source release instructions, see below. Source releases require binaries from the development kit binary releases.  For these binaries and the development kit binary images, please see:
+
+<https://github.com/LairdCP/SOM60-Release-Packages/releases>
 
 Laird SOM source build instructions
 ===================================
