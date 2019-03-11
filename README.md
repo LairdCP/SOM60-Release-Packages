@@ -76,12 +76,12 @@ Laird Linux has two branch and release types. Every A.0.0.x branch of Laird Linu
 ## Getting started with a Developer's SD Card Image and a SDK
 This section will walk a developer through following:
 
-* [Downloading a developer's SD card image](som60_reference_guide.md#downloading-a-developer-s-sd-card-image)
-* [Flashing a developer's SD card image](som60_reference_guide.md#flashing-a-developer-s-sd-card-image)
-* [Using a prebuilt SDK](som60_reference_guide.md#using-a-prebuilt-sdk)
-* [Downloading the board support package source code](som60_reference_guide.md#downloading-the-board-support-package-source-code)
-* [Building the developer's SD card image](som60_reference_guide.md#building-the-sd-card-developer-s-image)
-* [Creating a custom SDK](som60_reference_guide.md#create-a-custom-sdk)
+* [Downloading a developer's SD card image](#downloading-a-developer-s-sd-card-image)
+* [Flashing a developer's SD card image](#flashing-a-developer-s-sd-card-image)
+* [Using a prebuilt SDK](#using-a-prebuilt-sdk)
+* [Downloading the board support package source code](#downloading-the-board-support-package-source-code)
+* [Building the developer's SD card image](#building-the-sd-card-developer-s-image)
+* [Creating a custom SDK](#create-a-custom-sdk)
 
 ### Downloading a developer's SD card image
 Laird Linux releases include a prebuilt SD card image as a starting point for evaluating and integrating a Laird Linux release on a Laird SOM. For the SOM60, these prebuilt images are found on at [SOM60 release page](https://github.com/LairdCP/SOM60-Release-Packages/releases). These releases are named som60sd-laird-A.B.C.D.tar.bz2. These prebuilt SD card images are good for quickly testing a SOM running the latest software.
