@@ -76,11 +76,11 @@ Laird Linux has two branch and release types. Every A.0.0.x branch of Laird Linu
 ## Getting started with a Developer's SD Card Image and a SDK
 This section will walk a developer through following:
 
-* [Downloading a developer's SD card image](#downloading-a-developer-s-sd-card-image)
-* [Flashing a developer's SD card image](#flashing-a-developer-s-sd-card-image)
+* [Downloading a developer's SD card image](#downloading-a-developers-sd-card-image)
+* [Flashing a developer's SD card image](#flashing-a-developers-sd-card-image)
 * [Using a prebuilt SDK](#using-a-prebuilt-sdk)
 * [Downloading the board support package source code](#downloading-the-board-support-package-source-code)
-* [Building the developer's SD card image](#building-the-sd-card-developer-s-image)
+* [Building the developer's SD card image](#building-the-sd-card-developers-image)
 * [Creating a custom SDK](#create-a-custom-sdk)
 
 ### Downloading a developer's SD card image
