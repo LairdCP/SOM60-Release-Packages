@@ -12,7 +12,7 @@ Laird’s 60 Series SOM, based on the Microchip SAMA5D36 processor, brings all o
 ## 60 Series SOM
 For full hardware specifications, please see [Datasheet - 60 Series SOM](https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-02/CS-DS-60-SOM%20v1_2.pdf) on our website.
 ## 60 Series SOM Development Kit
-The DVK-SU60-SOMC development kit is intended for evaluating the features and software of the 60 Series SOM module.  The 60 Series SOM module is soldered to the development board and all its relevant hardware interfaces have been brought out onto the DVK-SU60-SOMC. An optional DVK-SU60-SOMC-LCD board is available to enabled evaluation of the graphics and touchscreen capabilties of the 60 Series SOM module.
+The DVK-SU60-SOMC development kit is intended for evaluating the features and software of the 60 Series SOM (SU60-SOMC) module.  The 60 Series SOM module is soldered to the development board and all its relevant hardware interfaces have been brought out onto the DVK-SU60-SOMC. An optional DVK-SU60-SOMC-LCD board is available to enabled evaluation of the graphics and touchscreen capabilties of the 60 Series SOM module.
 ### Kit Contents
 The development kit contains the following:
 * DVK-SU60-SOMC development board
@@ -44,8 +44,11 @@ To power up the board, follow these steps:
 ### Using the Debug Console
 Connect the USB-to-Micro USB cable from your computer to the Debug UART (USB1) on the DVK-SU60-SOMC. During development and evaluation, a serial console program is required.  Laird recommends the use of minicom on Linux or PuTTY on Windows. If using the recommended Ubuntu operating system for evaluation or development, you can install minicom as follows:
 
-* `sudo apt install minicom`
+* `$ sudo apt install minicom`
 
+Once the Debug UART (USB1) on the DVK-SU60-SOMC is connected to your Ubuntu computer, you should have a new /dev/ttyUSB device that has enumerated. Assuming this enumeration is /dev/ttyUSB0, the console of the SU60-SOMC can be accessed with minicom via the following command:
+
+* `$ sudo TERM=linux minicom -o -D /dev/ttyUSB0`
 
 ### Booting From SD Card
 ### Booting From Embedded NAND Flash
