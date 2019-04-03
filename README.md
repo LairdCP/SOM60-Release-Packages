@@ -8,8 +8,52 @@ SOM60 Development Kit and Source Releases.  For source release instructions and 
 The reference guide is intended to provide an embedded developer with the information needed to start evaluating and integrating the 60 Series SOM for their connectivity and embedded Linux processing needs.  The guide is designed to walk the developer integrating the 60 Series SOM though the same process Laird developers use to develop our own boxed products. This allows multiple levels of Laird's customer support team to assist with customer integrations.
 ## Product Overview
 Laird’s 60 Series SOM, based on the Microchip SAMA5D36 processor, brings all of Laird’s industry competence and capabilities into one solution. The SOM provides superior enterprise-class Wi-Fi connectivity with full support for 2x2 MU-MIMO 802.11ac WLAN, plus Bluetooth 4.2 dual-mode. This solution is equipped with a power efficient Cortex A5 applications processor, wireless and wired connectivity, enterprise-grade security, LCD support, and comprehensive Linux board support package (BSP). The 60 SOM is the ideal system on module for devices that require superior connectivity. Complete with the Sterling 60 series module and Summit Software Stack, the SOM provides superior wireless connectivity in harsh RF environments. For wired connectivity, it supports dual-Ethernet and CAN bus. The 30mm x 30mm form factor and variety of interfaces allow the 60 Series SOM to be used as a wireless bridge, main processing unit, or IoT gateway.
-## Specifications
-For full hardware specifications, please see Datasheet - 60 Series SOM on our website.
+# Hardware Information
+## 60 Series SOM
+For full hardware specifications, please see [Datasheet - 60 Series SOM](https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-02/CS-DS-60-SOM%20v1_2.pdf) on our website.
+## 60 Series SOM Development Kit
+The DVK-SU60-SOMC development kit is intended for evaluating the features and software of the 60 Series SOM module.  The 60 Series SOM module is soldered to the development board and all its relevant hardware interfaces have been brought out onto the DVK-SU60-SOMC. An optional DVK-SU60-SOMC-LCD board is available to enabled evaluation of the graphics and touchscreen capabilties of the 60 Series SOM module.
+### Kit Contents
+The development kit contains the following:
+* DVK-SU60-SOMC development board
+* External dipole antenna (2) – LSR 001-0009
+* Stand-offs (4)
+* Nuts (4)
+* Power supply – 12V 2A (1)
+* SMA to IPEX pigtail cable – 110 mm (2)
+* USB A to Micro USB – 1200 mm (1)
+* Product insert card (1)
+
+### Specifications
+![SOM60 DVK Spec](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_kit_spec.jpg?raw=true)
+### Block Diagram
+![SOM60 Block Diagram](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_block_diagram.jpg?raw=true)
+### Board Overview
+![SOM60 Labeled](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_labeled.jpg?raw=true)
+### Board Components
+![SOM60 Interface Con](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_board_interface_con.jpg?raw=true)
+### Pin Header Definition
+![SOM60 Pin Headers](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_pin_headers.jpg?raw=true)
+### Powering Up the Board
+To power up the board, follow these steps:
+1. Unpack the board. Be careful to avoid electrostatic discharge.
+2. Ensure VDDIOP0 and VDDIOP1 is configured to 3.3V by adjusting the slide switch SW3 and jumper SW4.
+3. Unpack the power supply, select the right power plug adapter corresponding to that of your country, and plug it into your AC outlet.
+4. Connect the power supply's DC barrel plug to the DC jack (CON8) on the DVK-SU60-SOMC.
+
+### Using the Debug Console
+Connect the USB-to-Micro USB cable from your computer to the Debug UART (USB1) on the DVK-SU60-SOMC. During development and evaluation, a serial console program is required.  Laird recommends the use of minicom on Linux or PuTTY on Windows. If using the recommended Ubuntu operating system for evaluation or development, you can install minicom as follows:
+
+* `sudo apt install minicom`
+
+
+### Booting From SD Card
+### Booting From Embedded NAND Flash
+### Booting From SAMBA
+![SOM60 NAND Deselect](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_nand_deselect.jpg?raw=true)
+### Using UART Directly Without FDTI Converter
+![SOM60 UART Wire Out](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_uart_wire_out.jpg?raw=true)
+# Software Information
 ## Prerequisites
 ### Linux Development Environment Setup
 These are Laird's recommendation for setting up a development environment for use with Laird's Buildroot based Linux board support package.
@@ -84,7 +128,7 @@ This section will walk a developer through following:
 * [Creating a custom SDK](#create-a-custom-sdk)
 
 ### Downloading a developer's SD card image
-Laird Linux releases include a prebuilt SD card image as a starting point for evaluating and integrating a Laird Linux release on a Laird SOM. For the SOM60, these prebuilt images are found on at [SOM60 release page](https://github.com/LairdCP/SOM60-Release-Packages/releases). These releases are named som60sd-laird-A.B.C.D.tar.bz2. These prebuilt SD card images are good for quickly testing a SOM running the latest software.
+Laird Linux releases include a prebuilt SD card image as a starting point for evaluating and integrating a Laird Linux release on a Laird SOM. For the 60 SOM, these prebuilt images are found on at [60 SOM release page](https://github.com/LairdCP/SOM60-Release-Packages/releases). These releases are named som60sd-laird-A.B.C.D.tar.bz2. These prebuilt SD card images are good for quickly testing a SOM running the latest software.
 
 ### Flashing a developer's SD card image
 Once the image is downloaded. Extract the image:
@@ -143,7 +187,7 @@ You can now insert your SD card into the SOM hardware development kit and press 
 
 ### Using a prebuilt SDK
 
-Laird Linux releases include a prebuilt SDK to start doing application development for a Laird SOM. For the SOM60, this prebuilt SDK is called som60sd-sdk-A.B.C.D.tar.bz2 and can be found with each release at the [SOM60 release page](https://github.com/LairdCP/SOM60-Release-Packages/releases). The prebuilt SDK includes the toolchain and all development files of the software packages used to generate the prebuilt SD card image from that release. The SDK can set up for use with an IDE to allow application developers to not need a full BSP on their system. To use the SDK, extract the SDK tarball then run the script relocate-sdk.sh (located at the top directory of the SDK), to make sure all paths are updated with the new location. For more information on using SDKs generated from Laird's Buildroot fork, see the [Buildroot manual's section on the SDK](https://buildroot.org/downloads/manual/manual.html#_advanced_usage).
+Laird Linux releases include a prebuilt SDK to start doing application development for a Laird SOM. For the 60 SOM, this prebuilt SDK is called som60sd-sdk-A.B.C.D.tar.bz2 and can be found with each release at the [60 SOM release page](https://github.com/LairdCP/SOM60-Release-Packages/releases). The prebuilt SDK includes the toolchain and all development files of the software packages used to generate the prebuilt SD card image from that release. The SDK can set up for use with an IDE to allow application developers to not need a full BSP on their system. To use the SDK, extract the SDK tarball then run the script relocate-sdk.sh (located at the top directory of the SDK), to make sure all paths are updated with the new location. For more information on using SDKs generated from Laird's Buildroot fork, see the [Buildroot manual's section on the SDK](https://buildroot.org/downloads/manual/manual.html#_advanced_usage).
 
 ### Downloading the board support package source code
 
