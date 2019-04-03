@@ -240,3 +240,7 @@ If you'd like to create a custom SDK from your customized source build, while in
 ```
 ~/git/lrd-7.0.0.x/wb/buildroot/output/som60sd$ make sdk
 ```
+
+## NetworkManager
+Laird uses its own customized fork of NetworkManager for networking configuration, including WiFi profile management. For more information on using NetworkManager please see our [Laird NetworkManager User Guide](https://github.com/LairdCP/SOM60-Release-Packages/releases/download/LRD-REL-6.0.0.138/user_guide_laird_networkmanager_0.1.pdf).
+```
