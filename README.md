@@ -20,7 +20,7 @@ The development kit contains the following:
 * Stand-offs (4)
 * Nuts (4)
 * Power supply – 12V 2A (1)
-* SMA to IPEX pigtail cable – 110 mm (2)
+* Female SMA to female U.FL cable – 110 mm (2)
 * USB A to Micro USB – 1200 mm (1)
 * Product insert card (1)
 
@@ -34,14 +34,27 @@ The development kit contains the following:
 ![SOM60 Interface Con](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_board_interface_con.jpg?raw=true)
 ### Pin Header Definition
 ![SOM60 Pin Headers](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_pin_headers.jpg?raw=true)
-### Powering Up the Board
+# Quick Start
+## Insert SD Card
+The DVK-SU60-SOMC comes with a preprogrammed SD card inserted into CON55 for quick evaluation of features like setting up WiFi profiles via [NetworkManager](#networkmanager). After an initial boot and once familar with having a development kit running, it is recommended you update to the latest prebuilt image available on our releases page. For more information on updating to a new SD card image or creating your own from source see [the getting started with a SD card section](#getting-started-with-a-developer-s-sd-card-image-and-a-sdk).
+
+## Install Antennas
+Unpack the two external dipole antennas and two SMA to U.FL cables. Screw each external dipole antennas into a SMA to U.FL cable. Plug each female U.FL connector on the SMA to U.FL cables into the male U.FL plugs on the SU60-SOMC (pictured below).
+
+![U.FL Cable Plugged into SU60-SOM](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_ufl.jpg?raw=true)
+## Powering Up the Board
 To power up the board, follow these steps:
 1. Unpack the board. Be careful to avoid electrostatic discharge.
 2. Ensure VDDIOP0 and VDDIOP1 is configured to 3.3V by adjusting the slide switch SW3 and jumper SW4.
 3. Unpack the power supply, select the right power plug adapter corresponding to that of your country, and plug it into your AC outlet.
 4. Connect the power supply's DC barrel plug to the DC jack (CON8) on the DVK-SU60-SOMC.
 
-### Using the Debug Console
+## Plug In Debug Console Cable
+Connect the USB-to-Micro USB cable from your computer to the Debug UART (USB1) on the DVK-SU60-SOMC. A picture of a ready to evaluate development kit is below:
+
+![DVK-SU60-SOMC Plugged In](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_plugged_in.jpg?raw=true)
+
+## Using the Debug Console
 Connect the USB-to-Micro USB cable from your computer to the Debug UART (USB1) on the DVK-SU60-SOMC. During development and evaluation, a serial console program is required.  Laird recommends the use of minicom on Linux or PuTTY on Windows. If using the recommended Ubuntu operating system for evaluation or development, you can install minicom as follows:
 
 * `$ sudo apt install minicom`
@@ -50,12 +63,65 @@ Once the Debug UART (USB1) on the DVK-SU60-SOMC is connected to your Ubuntu comp
 
 * `$ sudo TERM=linux minicom -o -D /dev/ttyUSB0`
 
-### Booting From SD Card
-### Booting From Embedded NAND Flash
-### Booting From SAMBA
-![SOM60 NAND Deselect](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_nand_deselect.jpg?raw=true)
-### Using UART Directly Without FDTI Converter
-![SOM60 UART Wire Out](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_uart_wire_out.jpg?raw=true)
+If you power cycle the SOM60 via the NRST (SW1) button, you should see a boot-up sequence similar to below. The example boot output has been heavily truncated to fit in this guide.
+
+```
+RomBOOT
+
+U-Boot SPL 2018.01-som60sd (Jan 31 2019 - 12:56:52)
+Trying to boot from MMC0
+reading u-boot.itb
+
+U-Boot 2018.01-som60sd (Jan 31 2019 - 12:56:52 -0500)
+
+CPU: SAMA5D36
+Crystal frequency:       12 MHz
+CPU clock        :      528 MHz
+...
+Hit any key to stop autoboot:  0
+reading kernel.itb
+4360555 bytes read in 282 ms (14.7 MiB/s)
+## Loading kernel from FIT Image at 21000000 ...
+...
+## Loading loadables from FIT Image at 21000000 ...
+   Trying 'script@1' loadables subimage
+
+   Verifying Hash Integrity ... sha256+ OK
+   Loading Kernel Image ... OK
+   Loading Device Tree to 27732000, end 2773e0a3 ... OK
+
+Starting kernel ...
+
+...
+
+Welcome to Laird Linux development build 20190131!
+
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+...
+[  OK  ] Started Hostname Service.
+
+Laird Linux development build 20190131
+summit login:
+```
+## Login and Example WiFi Scan
+Once you see `summit login:`, you are at the end of booting and can login using the user "root" and the password "summit". Once logged in, you can query for a basic WiFi scan list to see available networks using the command below:
+
+```
+# nmcli dev wifi list
+IN-USE  SSID         MODE   CHAN  RATE        SIGNAL  BARS  SECURITY         
+        --           Infra  149   270 Mbit/s  35      **    WPA2             
+        NowYouSeeMe  Infra  153   270 Mbit/s  30      *     WPA2             
+        wfa19        Infra  149   405 Mbit/s  29      *     WPA2 802.1X      
+        wfa9ac       Infra  149   405 Mbit/s  27      *     WPA2             
+        wfa0ac       Infra  149   405 Mbit/s  27      *     --               
+        wfa18        Infra  149   405 Mbit/s  25      *     WPA1 WPA2 802.1X 
+        wfa20        Infra  149   405 Mbit/s  25      *     WPA1 WPA2 802.1X 
+        nps_aes      Infra  149   405 Mbit/s  25      *     WPA2 802.1X      
+        11w_psk      Infra  149   405 Mbit/s  25      *     WPA2             
+        11w_dot1x    Infra  149   405 Mbit/s  25      *     WPA2             
+        wfa21        Infra  149   405 Mbit/s  25      *     WPA1 WPA2
+```
+For network configuration examples, please see the [NetworkManager](#networkmanager) section.
 # Software Information
 ## Prerequisites
 ### Linux Development Environment Setup
@@ -246,4 +312,10 @@ If you'd like to create a custom SDK from your customized source build, while in
 
 ## NetworkManager
 Laird uses its own customized fork of NetworkManager for networking configuration, including WiFi profile management. For more information on using NetworkManager please see our [Laird NetworkManager User Guide](https://github.com/LairdCP/SOM60-Release-Packages/releases/download/LRD-REL-6.0.0.138/user_guide_laird_networkmanager_0.1.pdf).
-```
+
+# Advanced Configuration
+## Hardware
+### SAM-BA In-System Programmer Boot Select
+![SOM60 NAND Deselect](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_nand_deselect.jpg?raw=true)
+### Using UART Directly Without FDTI Converter
+![SOM60 UART Wire Out](https://github.com/LairdCP/content_imgs/blob/master/som60/dvk_som60_uart_wire_out.jpg?raw=true)
