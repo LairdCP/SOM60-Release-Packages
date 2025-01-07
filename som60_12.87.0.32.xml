@@ -11,16 +11,16 @@
   <project path="buildroot"
            name="wb-buildroot.git" />
 
-  <project path="som-external/package/lrd/externals/kernel"
+  <project path="som-external/externals/kernel"
            name="wb-kernel.git" />
 
-  <project path="som-external/package/lrd/externals/u-boot-som60"
+  <project path="som-external/externals/u-boot-som60"
            name="u-boot-som.git" />
 
-  <project path="som-external/package/lrd/externals/summit-rcm"
+  <project path="som-external/externals/summit-rcm"
            name="summit-rcm.git" />    
 
-  <project path="som-external/package/lrd/externals/lrd-userspace-examples"
+  <project path="som-external/externals/lrd-userspace-examples"
            name="lrd-userspace-examples.git" />
 
   <project path="summit-radio-external"
