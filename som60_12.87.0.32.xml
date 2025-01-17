@@ -24,7 +24,7 @@
            name="lrd-userspace-examples.git" />
 
   <project path="summit-radio-external"
-           name="rfpros/summit-radio-external.git"
+           name="summit-radio-external.git"
            revision="lrd-12.29.0.x" />
 
 </manifest>
